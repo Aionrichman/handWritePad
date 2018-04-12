@@ -1,0 +1,2 @@
+model_checkpoint_path: "C:\\Users\\20258552\\Desktop\\mnist_side\\model\\model.ckpt"
+all_model_checkpoint_paths: "C:\\Users\\20258552\\Desktop\\mnist_side\\model\\model.ckpt"

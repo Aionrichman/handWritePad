@@ -1,0 +1,53 @@
+{% load static %}
+
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="utf-8">
+  <title>mnist demo</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" type="text/css", href="{% static 'predict/css/fun/bootstrap.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'predict/css/index.css' %}">
+</head>
+
+<body onselectstart="return false">
+
+  <div id="mnist-pad">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">手写板</a></li>
+            <li class="breadcrumb-item"><a href="table">预测记录</a></li>
+            <li class="breadcrumb-item active" aria-current="page">备用</li>
+        </ol>
+    </nav>
+
+    <div class="mnist-pad-body">
+        <canvas></canvas>
+        <form id="csrf-form">
+            {% csrf_token %}
+        </form>
+    </div>
+
+    <div class="mnist-pad-footer">
+      <div class="mnist-pad-result">
+        <h5>识别结果:</h5>
+        <h5 id="mnist-pad-result"></h5>
+      </div>
+
+      <div class="mnist-pad-actions">
+        <button type="button" id="mnist-pad-clear">清除</button>
+        <button type="button" id="mnist-pad-upload" disabled="disabled">预测错误</button>
+        <button type="button" id="mnist-pad-save">识别</button>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="{% static 'predict/js/fun/jquery.min.js' %}"></script>
+  <script src="{% static 'predict/js/signature_pad.js' %}"></script>
+  <script src="{% static 'predict/js/mnist.js' %}"></script>
+  <script src="{% static 'predict/js/index.js' %}"></script>
+</body>
+
+</html>
