@@ -1,0 +1,34 @@
+{% load static %}
+
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}{% endblock %}</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" type="text/css", href="{% static 'predict/css/fun/bootstrap.min.css' %}">
+  {% block css %}{% endblock %}
+</head>
+
+<body onselectstart="return false">
+
+  <div id="mnist-pad">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/predict">手写板</a></li>
+            <li class="breadcrumb-item"><a href="uploadFile">上传图片</a></li>
+            <li class="breadcrumb-item"><a href="resultTable">预测记录</a></li>
+            <li class="breadcrumb-item active" aria-current="page">备用</li>
+        </ol>
+    </nav>
+
+    {% block content %}{% endblock %}
+  </div>
+
+  <script src="{% static 'predict/js/fun/jquery.min.js' %}"></script>
+  <script src="{% static 'predict/js/fun/bootstrap.min.js' %}"></script>
+  {% block js %}{% endblock %}
+</body>
+
+</html>

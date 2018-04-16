@@ -1,38 +1,8 @@
+{% extends 'predict/template.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
 
-    <meta charset="utf-8" />
-    <title>mnist data</title>
-    <script src="{% static 'predict/js/fun/jquery.min.js' %}"></script>
-    <script src="{% static 'predict/js/fun/jquery-ui.min.js' %}"></script>
-    <script src="{% static 'predict/js/jqGrid/i18n/grid.locale-cn.js' %}"></script>
-    <script src="{% static 'predict/js/jqGrid/jquery.jqGrid.min.js' %}"></script>
-    <script src="{% static 'predict/js/fun/popper.min.js' %}"></script>
-    <script src="{% static 'predict/js/fun/bootstrap.min.js' %}"></script>
-    <script src="{% static 'predict/js/flot/jquery.flot.min.js' %}"></script>
-    <script src="{% static 'predict/js/flot/jquery.flot.pie.min.js' %}"></script>
-    <script src="{% static 'predict/js/table.js' %}"></script>
-
-	<link rel="stylesheet" href="{% static 'predict/css/fun/bootstrap.min.css' %}">
-	<link rel="stylesheet" href="{% static 'predict/css/jqGrid/octicons.css' %}">
-    <link rel="stylesheet" href="{% static '/predict/css/jqGrid/ui.jqgrid-bootstrap4.css' %}" />
-    <link rel="stylesheet" href="{% static 'predict/css/table.css' %}">
-
-
-</head>
-<body>
-
-<div id="mnist-pad">
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/predict">手写板</a></li>
-            <li class="breadcrumb-item"><a href="#">预测记录</a></li>
-            <li class="breadcrumb-item active" aria-current="page">备用</li>
-        </ol>
-    </nav>
-
+{% block title %}mnist result{% endblock %}
+{% block content %}
     <div id="mnist_table_pic">
         <div>
             <table id="jqGrid"></table>
@@ -45,7 +15,72 @@
 		</div>
 
     </div>
+{% endblock %}
 
-</div>
-</body>
-</html>
+{% block css %}
+    <link rel="stylesheet" href="{% static 'predict/css/jqGrid/octicons.css' %}">
+    <link rel="stylesheet" href="{% static '/predict/css/jqGrid/ui.jqgrid-bootstrap4.css' %}" />
+    <link rel="stylesheet" href="{% static 'predict/css/table.css' %}">
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'predict/js/fun/jquery-ui.min.js' %}"></script>
+    <script src="{% static 'predict/js/jqGrid/i18n/grid.locale-cn.js' %}"></script>
+    <script src="{% static 'predict/js/jqGrid/jquery.jqGrid.min.js' %}"></script>
+    <script src="{% static 'predict/js/fun/popper.min.js' %}"></script>
+    <script src="{% static 'predict/js/flot/jquery.flot.min.js' %}"></script>
+    <script src="{% static 'predict/js/flot/jquery.flot.pie.min.js' %}"></script>
+    <script src="{% static 'predict/js/table.js' %}"></script>
+{% endblock %}
+
+{#{% load static %}#}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{##}
+{#    <meta charset="utf-8" />#}
+{#    <title>mnist data</title>#}
+{#    <script src="{% static 'predict/js/fun/jquery.min.js' %}"></script>#}
+{#    <script src="{% static 'predict/js/fun/jquery-ui.min.js' %}"></script>#}
+{#    <script src="{% static 'predict/js/jqGrid/i18n/grid.locale-cn.js' %}"></script>#}
+{#    <script src="{% static 'predict/js/jqGrid/jquery.jqGrid.min.js' %}"></script>#}
+{#    <script src="{% static 'predict/js/fun/popper.min.js' %}"></script>#}
+{#    <script src="{% static 'predict/js/fun/bootstrap.min.js' %}"></script>#}
+{#    <script src="{% static 'predict/js/flot/jquery.flot.min.js' %}"></script>#}
+{#    <script src="{% static 'predict/js/flot/jquery.flot.pie.min.js' %}"></script>#}
+{#    <script src="{% static 'predict/js/table.js' %}"></script>#}
+{##}
+{#	<link rel="stylesheet" href="{% static 'predict/css/fun/bootstrap.min.css' %}">#}
+{#	<link rel="stylesheet" href="{% static 'predict/css/jqGrid/octicons.css' %}">#}
+{#    <link rel="stylesheet" href="{% static '/predict/css/jqGrid/ui.jqgrid-bootstrap4.css' %}" />#}
+{#    <link rel="stylesheet" href="{% static 'predict/css/table.css' %}">#}
+{##}
+{##}
+{#</head>#}
+{#<body>#}
+{##}
+{#<div id="mnist-pad">#}
+{#    <nav aria-label="breadcrumb">#}
+{#        <ol class="breadcrumb">#}
+{#            <li class="breadcrumb-item"><a href="/predict">手写板</a></li>#}
+{#            <li class="breadcrumb-item"><a href="#">预测记录</a></li>#}
+{#            <li class="breadcrumb-item active" aria-current="page">备用</li>#}
+{#        </ol>#}
+{#    </nav>#}
+{##}
+{#    <div id="mnist_table_pic">#}
+{#        <div>#}
+{#            <table id="jqGrid"></table>#}
+{#            <div id="jqGridPager"></div>#}
+{#	        <span class="oi oi-person"  ></span>#}
+{#        </div>#}
+{##}
+{#		<div class="pic_container">#}
+{#            <div id="pic_placeholder" class="pic_placeholder"></div>#}
+{#		</div>#}
+{##}
+{#    </div>#}
+{##}
+{#</div>#}
+{#</body>#}
+{#</html>#}

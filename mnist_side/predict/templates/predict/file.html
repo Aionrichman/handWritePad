@@ -1,0 +1,31 @@
+{% extends 'predict/template.html' %}
+{% load static %}
+
+{% block title %}mnist file{% endblock %}
+{% block content %}
+    <form id="csrf-form">
+        {% csrf_token %}
+    </form>
+    <input id="predictImg" name="predictImg" type="file" class="file" data-show-preview="true">
+    <br>
+    <br>
+    <br>
+    <div class="mnist-pad-footer">
+      <div class="mnist-pad-result">
+          <h5>识别结果:</h5>
+          <h5 id="mnist-pad-result"></h5>
+          <button type="button" id="mnist-pad-upload" class="btn" disabled="disabled">预测错误</button>
+      </div>
+    </div>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'predict/css/fileInput/fileinput.min.css' %}">
+    <link rel="stylesheet" href="{% static 'predict/css/file.css' %}">
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'predict/js/fileInput/fileinput.min.js' %}"></script>
+    <script src="{% static 'predict/js/fileInput/locales/zh.js' %}"></script>
+    <script src="{% static 'predict/js/file.js' %}"></script>
+{% endblock %}

@@ -2,6 +2,7 @@ import os
 import time
 import json
 
+from PIL import Image
 from django.http import HttpResponse, HttpResponseForbidden, Http404
 from django.shortcuts import render
 from django.core.files.storage import default_storage
@@ -21,6 +22,11 @@ def predict_result(request):
         data = request.FILES['predictImg']
         filename = str(int(time.mktime(time.localtime()))) + '.png'
         img_url = default_storage.save(os.path.join(STATICFILES_DIRS[0], filename), ContentFile(data.read()))
+
+        with Image.open(img_url).convert('L') as img:
+            if img.size[0] != 28 or img.size[1] != 28:
+                img = img.resize((28, 28))
+            img.save(img_url)
 
         id, predict = predict_num(img_url)
         result_dict = {
@@ -53,7 +59,7 @@ def result_table(request):
     return render(request, 'predict/table.html')
 
 
-def get_table_data(requset):
+def get_table_data(request):
     try:
         result = PredictResult.objects.all()
     except PredictResult.DoesNotExist:
@@ -70,3 +76,7 @@ def get_table_data(requset):
         data.append(tmp_dict)
 
     return HttpResponse(json.dumps(data))
+
+
+def upload_file(request):
+    return render(request, 'predict/file.html')
